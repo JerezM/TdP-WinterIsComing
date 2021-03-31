@@ -10,17 +10,21 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
+import main.controller.FileStockerControllerImpl;
+import main.controller.LoadBtnToFileStockerController;
 import main.view.GUI;
 
 @SuppressWarnings("serial")
 public class LoadDirectoryBtn extends JButton implements ActionListener {
 	
 	private static final GUI gui = GUI.getInstance();
+	private LoadBtnToFileStockerController fileStockerController;
 	
 	public LoadDirectoryBtn() {
         this.setText("Cargar Directorio");
-
         this.addActionListener(this);
+        
+        fileStockerController = FileStockerControllerImpl.getInstance();
     }
 	
 	@Override
@@ -42,11 +46,11 @@ public class LoadDirectoryBtn extends JButton implements ActionListener {
         	File[] listOfFiles = directorySelected.listFiles(filter);
         	
         	if ( (listOfFiles.length > 0) && (listOfFiles != null) ) {//Si el directorio seleccionado contenia archivos
-        		//me comunico con el controller
+        		this.fileStockerController.loadFiles(listOfFiles);
         	}
         	else {
         		System.out.println("El directorio seleccionado no posee archivos de texto.");
-        		this.showMessage("El directorio seleccionado no posee archivos de texto.");
+        		//this.showMessage("El directorio seleccionado no posee archivos de texto.");
         	}
         	
         }
