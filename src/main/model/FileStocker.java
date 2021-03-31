@@ -28,4 +28,10 @@ public interface FileStocker {
 	 * @return Un arreglo de entradas<Palabra, Porcentaje> el cual contendra las 5 palabras mas utilizadas.
 	 */
 	public EntryPersonalized<String, Double>[] individualCalculation(File file);
+	
+	/**
+	 * Consulta los archivos almacenados.
+	 * @return Un arreglo con los archivos almacenados, en caso de no tener sera una referencia Null.
+	 */
+	public File[] getFiles();
 }

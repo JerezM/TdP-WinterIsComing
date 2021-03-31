@@ -21,7 +21,7 @@ public class FileStockerImpl implements FileStocker {
 	private File[] files;
 	
 	private FileStockerImpl() {
-		
+		files = null;
 	}
 	
 	public static FileStocker getInstance() {
@@ -38,6 +38,12 @@ public class FileStockerImpl implements FileStocker {
 	}
 
 	@Override
+	public File[] getFiles() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
 	public EntryPersonalized<String, Double>[] generalCalculation() {
 		Map<String, Integer> wordsMap = new HashMap<String, Integer>();
 		int totalWords = 0;
@@ -49,11 +55,13 @@ public class FileStockerImpl implements FileStocker {
         	
 			if ( actualFile != null ) {
 				totalWords = this.parseFile(actualFile, wordsMap);
+				System.out.println("parsea archivo");
 			}
 					
 		}
 		
 		topWords = this.traverseMap(wordsMap, totalWords);
+		System.out.println("recorre mapeo");
 		
 		return topWords;
 	}
@@ -217,6 +225,5 @@ public class FileStockerImpl implements FileStocker {
 		
 		return minorRef;
 	}
-	
 	
 }
