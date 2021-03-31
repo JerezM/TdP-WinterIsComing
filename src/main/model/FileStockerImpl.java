@@ -34,7 +34,7 @@ public class FileStockerImpl implements FileStocker {
 	}
 
 	@Override
-	public EntryPersonalized<String, Double>[] particularCalculation(File file) {
+	public EntryPersonalized<String, Double>[] individualCalculation(File file) {
 		// TODO Auto-generated method stub
 		return null;
 	}

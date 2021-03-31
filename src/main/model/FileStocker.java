@@ -13,7 +13,7 @@ public interface FileStocker {
 	public void loadFiles(File[] files);
 	
 	/**
-	 * Se encarga de calcular cuales son las 5 palabras mas utilizadas en todos los archivos almacenado,
+	 * Se encarga de calcular cuales son las 5 palabras mas utilizadas en todos los archivos analizados,
 	 * junto con su porcentaje de aparicion respectivo.
 	 * 
 	 * @return Un arreglo de entradas<Palabra, Porcentaje> el cual contendra las 5 palabras mas utilizadas.
@@ -27,5 +27,5 @@ public interface FileStocker {
 	 * @param file Archivo que se desea analizar.
 	 * @return Un arreglo de entradas<Palabra, Porcentaje> el cual contendra las 5 palabras mas utilizadas.
 	 */
-	public EntryPersonalized<String, Double>[] particularCalculation(File file);
+	public EntryPersonalized<String, Double>[] individualCalculation(File file);
 }
