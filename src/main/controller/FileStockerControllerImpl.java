@@ -4,6 +4,9 @@ import java.io.File;
 
 import main.model.FileStocker;
 import main.model.FileStockerImpl;
+import main.service.entry.EntryPersonalized;
+import main.view.paneles.TopFivePanel;
+import main.view.paneles.TopFivePanelImpl;
 
 public class FileStockerControllerImpl implements 
 			 LoadBtnToFileStockerController, StartBtnToFileStockerController, FileListToFileStockerController {
@@ -11,9 +14,12 @@ public class FileStockerControllerImpl implements
 	private static FileStockerControllerImpl instance;
 	
 	private FileStocker fileStocker;
+	private TopFivePanel topFivePanel;
 	
 	private FileStockerControllerImpl() {
 		this.fileStocker = FileStockerImpl.getInstance();
+		
+		this.topFivePanel = TopFivePanelImpl.getInstance();
 	}
 	
 	public static FileStockerControllerImpl getInstance() {
@@ -31,9 +37,17 @@ public class FileStockerControllerImpl implements
 
 	@Override
 	public void generalCalculation() {
-		this.fileStocker.generalCalculation();
-		//Consultar la lista de archivos
-		//Comunicarse con el JPanel para mostrar los resultados
+		EntryPersonalized<String, Double>[] topWords = this.fileStocker.generalCalculation();
+		
+		String[] topWordsString = new String[5];
+		for (int i = 0; i < topWords.length; i++) {
+			EntryPersonalized<String, Double> entry = topWords[i];
+			topWordsString[i] = (entry.getKey()+": "+entry.getValue()+"%");
+		}
+		
+		this.topFivePanel.loadTopFive(topWordsString);
+		
+		//File[] files = this.fileStocker.getFiles();
 		//Comunicarse con el FileListPanel para pasarle los archivos que se analizaron
 	}
 
