@@ -7,4 +7,5 @@ public interface TopFivePanel {
 	 * @param words Arreglo con las palabras elegidas.
 	 */
 	public void loadTopFive(String[] words);
+	
 }

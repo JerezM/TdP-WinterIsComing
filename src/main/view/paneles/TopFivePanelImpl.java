@@ -4,6 +4,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import main.service.language_changer.LanguageChanger;
+
 @SuppressWarnings("serial")
 public class TopFivePanelImpl extends JPanel implements TopFivePanel {
 	private static TopFivePanelImpl instance;
@@ -12,7 +14,7 @@ public class TopFivePanelImpl extends JPanel implements TopFivePanel {
 	private JTextArea textArea_1, textArea_2, textArea_3, textArea_4, textArea_5;
 	
 	private TopFivePanelImpl() {
-		this.setBounds(180, 10, 513, 223);
+		this.setBounds(180, 10, 450, 223);
 		this.setLayout(null);
 		
 		this.initComponents();
@@ -37,7 +39,7 @@ public class TopFivePanelImpl extends JPanel implements TopFivePanel {
 	
 	private void initComponents() {
 		//Etiqueta del titulo sobre las palabras
-     	lblTitulo = new JLabel("Las 5 palabras mas usadas en el directorio");
+     	lblTitulo = new JLabel("Palabras mas utilizadas:");
      	lblTitulo.setBounds(5, 11, 311, 14);
      	this.add(lblTitulo);
 

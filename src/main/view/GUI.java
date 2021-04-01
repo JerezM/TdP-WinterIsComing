@@ -1,5 +1,6 @@
 package main.view;
 
+import java.awt.Component;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -14,6 +15,8 @@ import main.view.buttons.EnglishBtn;
 import main.view.buttons.LoadDirectoryBtn;
 import main.view.buttons.SpanishBtn;
 import main.view.buttons.StartBtn;
+import main.view.paneles.TopFivePanel;
+//import main.view.paneles.FileListPanelImpl;
 import main.view.paneles.TopFivePanelImpl;
 
 @SuppressWarnings("serial")
@@ -23,9 +26,9 @@ public class GUI extends JFrame implements LanguageChanger {
     
     private JButton loadDirectoryBtn, startBtn, enBtn, esBtn;
     private JLabel lblCambiarLenguaje;
-    private JPanel topFivePanel;
-	
-
+    private TopFivePanel topFivePanel;
+    //private JPanel FileListPanelImpl;
+    
     /**
      * Create the frame.
      */
@@ -70,12 +73,16 @@ public class GUI extends JFrame implements LanguageChanger {
         this.enBtn.setBounds(37, 196, 90, 23);
         this.contentPane.add(enBtn);
         
-        this.topFivePanel = (JPanel) TopFivePanelImpl.getInstance();
-        this.contentPane.add(topFivePanel);
+        this.topFivePanel = TopFivePanelImpl.getInstance();
+        this.contentPane.add((JPanel) topFivePanel);
 
-     	lblCambiarLenguaje = new JLabel("Cambiar idioma");
-     	lblCambiarLenguaje.setBounds(37, 173, 150, 14);
-     	getContentPane().add(lblCambiarLenguaje);
+     	this.lblCambiarLenguaje = new JLabel("Cambiar idioma:");
+     	this.lblCambiarLenguaje.setBounds(37, 173, 150, 14);
+     	this.getContentPane().add(lblCambiarLenguaje);
+     	
+     	/*this.fileListPanel = FileListPanelImpl.getInstance();
+     	this.fileListPanel.setBounds(480, 10, 200, 222);
+     	this.getContentPane().add(fileListPanel);*/
 	}
 
 	@Override
@@ -99,9 +106,11 @@ public class GUI extends JFrame implements LanguageChanger {
 		
 		this.loadDirectoryBtn.setText( propertiesBundle.getString("load.directory.btn") );
 		this.startBtn.setText( propertiesBundle.getString("start.btn") );
+		this.lblCambiarLenguaje.setText( propertiesBundle.getString("change.language") );
 		
 		System.out.println("idioma cambiado al:" + locale.getLanguage());
 		
 		//Buscar como actualizar los botones modificados
 	}
+	
 }
