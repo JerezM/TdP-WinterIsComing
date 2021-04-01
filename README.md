@@ -1,4 +1,4 @@
-# Sudoku
+# Winter is Coming
 
 ## Consideraciones:
 * El uso de los properties files funciona correctamentes pero hubo fallas al actualizar el txt de los btn dinamicamente.
