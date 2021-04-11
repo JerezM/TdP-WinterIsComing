@@ -54,11 +54,11 @@ public class FileStockerImpl implements FileStocker {
         	File actualFile = files[i]; 
         	
 			if ( actualFile != null ) {
-				totalWords = this.parseFile(actualFile, wordsMap);
-				System.out.println("parsea archivo");
+				totalWords += this.parseFile(actualFile, wordsMap);
 			}
-					
+			
 		}
+		System.out.println("total words: "+totalWords);
 		
 		topWords = this.traverseMap(wordsMap, totalWords);
 		System.out.println("recorre mapeo");
@@ -107,6 +107,10 @@ public class FileStockerImpl implements FileStocker {
 					wordNumber = (wordNumber == null) ? 1 : (wordNumber +1); 
 					
 					wordsMap.put(actualWord, wordNumber);
+				}
+				else {
+					@SuppressWarnings("unused")
+					String trashTxt = scn.next();//Se consume el string para que el scn avance al proximo token.
 				}
 			}
         
