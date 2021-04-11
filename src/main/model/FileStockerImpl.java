@@ -39,8 +39,7 @@ public class FileStockerImpl implements FileStocker {
 
 	@Override
 	public File[] getFiles() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.files;
 	}
 	
 	@Override

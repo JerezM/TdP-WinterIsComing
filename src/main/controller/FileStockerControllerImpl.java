@@ -17,13 +17,13 @@ public class FileStockerControllerImpl implements
 	
 	private FileStocker fileStocker;
 	private TopFivePanel topFivePanel;
-	//private FileListPanel fileListPanel; 
+	private FileListPanel fileListPanel; 
 	
 	private FileStockerControllerImpl() {
 		this.fileStocker = FileStockerImpl.getInstance();
 		
 		this.topFivePanel = TopFivePanelImpl.getInstance();
-		//this.fileListPanel = (FileListPanel) FileListPanelImpl.getInstance();
+		this.fileListPanel =  FileListPanelImpl.getInstance();
 	}
 	
 	public static FileStockerControllerImpl getInstance() {
@@ -51,8 +51,10 @@ public class FileStockerControllerImpl implements
 		
 		this.topFivePanel.loadTopFive(topWordsString);
 		
-		//File[] files = this.fileStocker.getFiles();
-		//fileListPanel.loadFiles(files);
+		File[] files = this.fileStocker.getFiles();
+		this.fileListPanel.loadController(this);
+		this.fileListPanel.loadFiles(files);
+		
 	}
 
 	@Override

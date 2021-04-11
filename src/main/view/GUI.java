@@ -14,6 +14,7 @@ import main.view.buttons.EnglishBtn;
 import main.view.buttons.LoadDirectoryBtn;
 import main.view.buttons.SpanishBtn;
 import main.view.buttons.StartBtn;
+import main.view.paneles.FileListPanelImpl;
 import main.view.paneles.TopFivePanel;
 //import main.view.paneles.FileListPanelImpl;
 import main.view.paneles.TopFivePanelImpl;
@@ -23,8 +24,9 @@ public class GUI extends JFrame implements LanguageChanger {
     private JPanel contentPane;
     
     private JButton loadDirectoryBtn, startBtn, enBtn, esBtn;
-    private JLabel lblCambiarLenguaje;
+    private JLabel lblCambiarLenguaje, lblAnalyzedFiles;
     private TopFivePanel topFivePanel;
+    private JPanel fileListPanel;
     
     /**
      * Create the frame.
@@ -69,9 +71,13 @@ public class GUI extends JFrame implements LanguageChanger {
      	this.lblCambiarLenguaje.setBounds(37, 173, 150, 14);
      	this.getContentPane().add(lblCambiarLenguaje);
      	
-     	/*this.fileListPanel = FileListPanelImpl.getInstance();
-     	this.fileListPanel.setBounds(480, 10, 200, 222);
-     	this.getContentPane().add(fileListPanel);*/
+     	this.lblAnalyzedFiles = new JLabel("Archivos analizados:");
+     	this.lblAnalyzedFiles.setBounds(480, 10, 150, 14);
+     	this.getContentPane().add(lblAnalyzedFiles);
+     	
+     	this.fileListPanel = FileListPanelImpl.getInstance();
+     	this.fileListPanel.setBounds(480, 70, 200, 222);
+     	this.getContentPane().add(fileListPanel);
 	}
 
 	@Override
