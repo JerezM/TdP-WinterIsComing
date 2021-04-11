@@ -1,6 +1,5 @@
 package main.view;
 
-import java.awt.Component;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -21,30 +20,20 @@ import main.view.paneles.TopFivePanelImpl;
 
 @SuppressWarnings("serial")
 public class GUI extends JFrame implements LanguageChanger {
-    private static GUI instance;
     private JPanel contentPane;
     
     private JButton loadDirectoryBtn, startBtn, enBtn, esBtn;
     private JLabel lblCambiarLenguaje;
     private TopFivePanel topFivePanel;
-    //private JPanel FileListPanelImpl;
     
     /**
      * Create the frame.
      */
-    private GUI() {
+    public GUI() {
 
         this.initComponents();
 
 	}
-	
-	public static GUI getInstance() {
-		if( instance == null ) {
-			instance = new GUI();
-		}
-		
-		return instance;
-    }
 	
 	private void initComponents() {
 		setTitle("got");
@@ -57,7 +46,7 @@ public class GUI extends JFrame implements LanguageChanger {
 		setContentPane(contentPane);
         contentPane.setLayout(null);
         
-        this.loadDirectoryBtn = new LoadDirectoryBtn();
+        this.loadDirectoryBtn = new LoadDirectoryBtn(this);
         this.loadDirectoryBtn.setBounds(10, 72, 150, 23);
         this.contentPane.add(loadDirectoryBtn);
         
@@ -65,11 +54,11 @@ public class GUI extends JFrame implements LanguageChanger {
         this.startBtn.setBounds(10, 126, 150, 23);
         this.contentPane.add(startBtn);
         
-        this.esBtn = new SpanishBtn();
+        this.esBtn = new SpanishBtn(this);
         this.esBtn.setBounds(37, 225, 90, 23);
         this.contentPane.add(esBtn);
         
-        this.enBtn = new EnglishBtn();
+        this.enBtn = new EnglishBtn(this);
         this.enBtn.setBounds(37, 196, 90, 23);
         this.contentPane.add(enBtn);
         
@@ -104,13 +93,18 @@ public class GUI extends JFrame implements LanguageChanger {
 	private void changeLanguage(Locale locale) {
 		ResourceBundle propertiesBundle = ResourceBundle.getBundle("resources.properties.GOTBundle", locale);
 		
+		//Buttons
 		this.loadDirectoryBtn.setText( propertiesBundle.getString("load.directory.btn") );
 		this.startBtn.setText( propertiesBundle.getString("start.btn") );
+		this.enBtn.setText( propertiesBundle.getString("english.btn") );
+		this.esBtn.setText( propertiesBundle.getString("spanish.btn") );
+		
+		//Labels
 		this.lblCambiarLenguaje.setText( propertiesBundle.getString("change.language") );
+		this.topFivePanel.changeLabelLanguage( propertiesBundle.getString("more.used.words") );
 		
 		System.out.println("idioma cambiado al:" + locale.getLanguage());
 		
-		//Buscar como actualizar los botones modificados
 	}
 	
 }

@@ -6,16 +6,16 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import main.service.language_changer.LanguageChanger;
-import main.view.GUI;
 
 @SuppressWarnings("serial")
 public class SpanishBtn extends JButton implements ActionListener {
 	
-	private static final LanguageChanger languageChanger = GUI.getInstance();
+	private LanguageChanger languageChanger;
 	
-	public SpanishBtn() {
+	public SpanishBtn(LanguageChanger lc) {
 		this.setText("Español");
         this.addActionListener(this);
+        this.languageChanger = lc;
 	}
 	
 	@Override

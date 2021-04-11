@@ -17,12 +17,13 @@ import main.view.GUI;
 @SuppressWarnings("serial")
 public class LoadDirectoryBtn extends JButton implements ActionListener {
 	
-	private static final GUI gui = GUI.getInstance();
+	private GUI gui;
 	private LoadBtnToFileStockerController fileStockerController;
 	
-	public LoadDirectoryBtn() {
+	public LoadDirectoryBtn(GUI gui) {
         this.setText("Cargar Directorio");
         this.addActionListener(this);
+        this.gui = gui;
         
         fileStockerController = FileStockerControllerImpl.getInstance();
     }

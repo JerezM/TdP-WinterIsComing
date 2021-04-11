@@ -4,7 +4,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import main.service.language_changer.LanguageChanger;
 
 @SuppressWarnings("serial")
 public class TopFivePanelImpl extends JPanel implements TopFivePanel {
@@ -90,6 +89,11 @@ public class TopFivePanelImpl extends JPanel implements TopFivePanel {
      	textArea_5.setEditable(false);
      	textArea_5.setBounds(30, 200, 264, 22);
      	this.add(textArea_5);
+	}
+
+	@Override
+	public void changeLabelLanguage(String str) {
+		this.lblTitulo.setText(str);
 	}
 
 }

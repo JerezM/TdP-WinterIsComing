@@ -10,7 +10,7 @@ public class GOT {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GUI frame = GUI.getInstance();
+					GUI frame = new GUI();
 					frame.setVisible(true);
 					
 				} catch (Exception e) {

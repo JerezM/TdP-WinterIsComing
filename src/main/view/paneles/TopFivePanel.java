@@ -8,4 +8,10 @@ public interface TopFivePanel {
 	 */
 	public void loadTopFive(String[] words);
 	
+	/**
+	 * Se encarga de cambiar el texto del label contenido en este panel.
+	 * @param str nueva texto del label.
+	 */
+	public void changeLabelLanguage(String str);
+	
 }
