@@ -62,7 +62,7 @@ public class LoadDirectoryBtn extends JButton implements ActionListener {
 	}
 	
 	private void showMessage(String msg) {
-		JOptionPane.showInternalMessageDialog(null, msg);
+		JOptionPane.showInternalMessageDialog(this.gui, msg);
         gui.dispatchEvent( new WindowEvent(gui, WindowEvent.WINDOW_CLOSING) );
 	}
 }
